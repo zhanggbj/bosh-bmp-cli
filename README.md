@@ -1,4 +1,4 @@
-BMS CLI [![Build Status](https://travis-ci.org/maximilien/bosh-bms-cli.svg?branch=master)](https://travis-ci.org/maximilien/bosh-bms-cli#)
+BMP CLI [![Build Status](https://travis-ci.org/maximilien/bosh-bms-cli.svg?branch=master)](https://travis-ci.org/maximilien/bosh-bms-cli#)
 ==============================
 
 [![Join the chat at https://gitter.im/maximilien/bosh-bms-cli](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/maximilien/bosh-bms-cli?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -26,7 +26,7 @@ Two additional ways, besides Gitter or Slack chat above, to contact us:
 Assuming you have a valid [Golang 1.4.2](https://golang.org/dl/) or [later](https://golang.org/dl/) installed for your system, you can quickly get the latest `i18n4go` executable by running the following `go` command:
 
 ```
-$ go get github.com/maximilien/bosh-bms-cli/bmp
+$ go get github.com/maximilien/bosh-bmp-cli/bmp
 ```
 
 This will build and place the `bmp` executable built for your operating system in your `$GOPATH/bin` directory.
