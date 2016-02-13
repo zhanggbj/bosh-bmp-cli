@@ -7,7 +7,7 @@ import (
 	cmds "github.com/maximilien/bosh-bmp-cli/cmds"
 )
 
-var _ = Describe("bms command", func() {
+var _ = Describe("create-baremetals command", func() {
 
 	var (
 		args    []string
@@ -16,39 +16,39 @@ var _ = Describe("bms command", func() {
 	)
 
 	BeforeEach(func() {
-		args = []string{"bmp", "bms"}
+		args = []string{"bmp", "create-baremetals"}
 		options = cmds.Options{
 			Verbose: false,
 		}
 
-		cmd = cmds.NewBmsCommand(options)
+		cmd = cmds.NewCreateBaremetalsCommand(options)
 	})
 
-	Describe("NewBmsCommand", func() {
-		It("create new BmsCommand", func() {
+	Describe("NewCreateBaremetalsCommand", func() {
+		It("create new CreateBaremetalsCommand", func() {
 			Expect(cmd).ToNot(BeNil())
 
-			cmd2 := cmds.NewBmsCommand(options)
+			cmd2 := cmds.NewCreateBaremetalsCommand(options)
 			Expect(cmd2).ToNot(BeNil())
 			Expect(cmd2).To(Equal(cmd))
 		})
 	})
 
 	Describe("#Name", func() {
-		It("returns the name of a BmsCommand", func() {
-			Expect(cmd.Name()).To(Equal("bms"))
+		It("returns the name of a CreateBaremetalsCommand", func() {
+			Expect(cmd.Name()).To(Equal("create-baremetals"))
 		})
 	})
 
 	Describe("#Description", func() {
-		It("returns the description of a BmsCommand", func() {
-			Expect(cmd.Description()).To(Equal("List all bare metals"))
+		It("returns the description of a CreateBaremetalsCommand", func() {
+			Expect(cmd.Description()).To(Equal(`Create the missed baremetals: \"option --dryrun, only verify the orders\"`))
 		})
 	})
 
 	Describe("#Usage", func() {
-		It("returns the usage text of a BmsCommand", func() {
-			Expect(cmd.Usage()).To(Equal("bmp bms"))
+		It("returns the usage text of a CreateBaremetalsCommand", func() {
+			Expect(cmd.Usage()).To(Equal("bmp create-baremetals [--dryrun]"))
 		})
 	})
 

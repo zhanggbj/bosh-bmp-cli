@@ -1,18 +1,15 @@
 package cmds
 
 import (
-	"errors"
 	"fmt"
 )
 
 type loginCommand struct {
-	args    []string
 	options Options
 }
 
-func NewLoginCommand(args []string, options Options) loginCommand {
+func NewLoginCommand(options Options) loginCommand {
 	return loginCommand{
-		args:    args,
 		options: options,
 	}
 }
@@ -34,10 +31,11 @@ func (cmd loginCommand) Options() Options {
 }
 
 func (cmd loginCommand) Validate() (bool, error) {
-	return false, errors.New("Implement me!")
+	fmt.Printf("Validating %s command: options: %#v", cmd.Name(), cmd.options)
+	return true, nil
 }
 
 func (cmd loginCommand) Execute(args []string) (int, error) {
-	fmt.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
+	fmt.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), args, cmd.options)
 	return 0, nil
 }

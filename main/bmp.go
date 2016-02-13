@@ -29,6 +29,17 @@ func main() {
 		os.Exit(1)
 	}
 
+	validated, err := command.Validate()
+	if err != nil {
+		handlePanic()
+		os.Exit(1)
+	}
+
+	if !validated {
+		fmt.Println("Invalid options for command: ", err.Error())
+		os.Exit(1)
+	}
+
 	rc, err := command.Execute(args)
 	if err != nil {
 		handlePanic()
@@ -48,47 +59,47 @@ func createCommand(args []string, options cmds.Options) (cmds.Command, error) {
 	cmdName := args[1]
 	switch cmdName {
 	case "bms":
-		command = cmds.NewBmsCommand(args, options)
+		command = cmds.NewBmsCommand(options)
 		break
 
 	case "create-baremetals":
-		command = cmds.NewCreateBaremetalsCommand(args, options)
+		command = cmds.NewCreateBaremetalsCommand(options)
 		break
 
 	case "login":
-		command = cmds.NewLoginCommand(args, options)
+		command = cmds.NewLoginCommand(options)
 		break
 
 	case "sl-package-options":
-		command = cmds.NewSlPackageOptionsCommand(args, options)
+		command = cmds.NewSlPackageOptionsCommand(options)
 		break
 
 	case "sl-packages":
-		command = cmds.NewSlPackagesCommand(args, options)
+		command = cmds.NewSlPackagesCommand(options)
 		break
 
 	case "status":
-		command = cmds.NewStatusCommand(args, options)
+		command = cmds.NewStatusCommand(options)
 		break
 
 	case "stemcells":
-		command = cmds.NewStemcellsCommand(args, options)
+		command = cmds.NewStemcellsCommand(options)
 		break
 
 	case "target":
-		command = cmds.NewTargetCommand(args, options)
+		command = cmds.NewTargetCommand(options)
 		break
 
 	case "task":
-		command = cmds.NewTaskCommand(args, options)
+		command = cmds.NewTaskCommand(options)
 		break
 
 	case "tasks":
-		command = cmds.NewTasksCommand(args, options)
+		command = cmds.NewTasksCommand(options)
 		break
 
 	case "update-state":
-		command = cmds.NewUpdateStateCommand(args, options)
+		command = cmds.NewUpdateStateCommand(options)
 		break
 
 	default:

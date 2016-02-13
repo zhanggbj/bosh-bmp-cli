@@ -1,7 +1,6 @@
 package cmds
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -10,9 +9,8 @@ type targetCommand struct {
 	options Options
 }
 
-func NewTargetCommand(args []string, options Options) targetCommand {
+func NewTargetCommand(options Options) targetCommand {
 	return targetCommand{
-		args:    args,
 		options: options,
 	}
 }
@@ -34,10 +32,11 @@ func (cmd targetCommand) Options() Options {
 }
 
 func (cmd targetCommand) Validate() (bool, error) {
-	return false, errors.New("Implement me!")
+	fmt.Printf("Validating %s command: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
+	return true, nil
 }
 
 func (cmd targetCommand) Execute(args []string) (int, error) {
-	fmt.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
+	fmt.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), args, cmd.options)
 	return 0, nil
 }

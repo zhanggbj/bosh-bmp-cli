@@ -7,8 +7,7 @@ import (
 	cmds "github.com/maximilien/bosh-bmp-cli/cmds"
 )
 
-var _ = Describe("bms command", func() {
-
+var _ = Describe("stemcells command", func() {
 	var (
 		args    []string
 		options cmds.Options
@@ -16,44 +15,44 @@ var _ = Describe("bms command", func() {
 	)
 
 	BeforeEach(func() {
-		args = []string{"bmp", "bms"}
+		args = []string{"bmp", "stemcells"}
 		options = cmds.Options{
 			Verbose: false,
 		}
 
-		cmd = cmds.NewBmsCommand(options)
+		cmd = cmds.NewStemcellsCommand(options)
 	})
 
-	Describe("NewBmsCommand", func() {
-		It("create new BmsCommand", func() {
+	Describe("NewStemcellsCommand", func() {
+		It("create new StemcellsCommand", func() {
 			Expect(cmd).ToNot(BeNil())
 
-			cmd2 := cmds.NewBmsCommand(options)
+			cmd2 := cmds.NewStemcellsCommand(options)
 			Expect(cmd2).ToNot(BeNil())
 			Expect(cmd2).To(Equal(cmd))
 		})
 	})
 
 	Describe("#Name", func() {
-		It("returns the name of a BmsCommand", func() {
-			Expect(cmd.Name()).To(Equal("bms"))
+		It("returns the name of a StemcellsCommand", func() {
+			Expect(cmd.Name()).To(Equal("stemcells"))
 		})
 	})
 
 	Describe("#Description", func() {
-		It("returns the description of a BmsCommand", func() {
-			Expect(cmd.Description()).To(Equal("List all bare metals"))
+		It("returns the description of a StemcellsCommand", func() {
+			Expect(cmd.Description()).To(Equal("List all stemcells"))
 		})
 	})
 
 	Describe("#Usage", func() {
-		It("returns the usage text of a BmsCommand", func() {
-			Expect(cmd.Usage()).To(Equal("bmp bms"))
+		It("returns the usage text of a StemcellsCommand", func() {
+			Expect(cmd.Usage()).To(Equal("bmp stemcells"))
 		})
 	})
 
 	Describe("#Validate", func() {
-		It("validates a good BmsCommand", func() {
+		It("validates a good StemcellsCommand", func() {
 			validate, err := cmd.Validate()
 			Expect(validate).To(BeTrue())
 			Expect(err).ToNot(HaveOccurred())
@@ -61,7 +60,7 @@ var _ = Describe("bms command", func() {
 	})
 
 	Describe("#Execute", func() {
-		It("executes a good BmsCommand", func() {
+		It("executes a good StemcellsCommand", func() {
 			rc, err := cmd.Execute(args)
 			Expect(rc).To(Equal(0))
 			Expect(err).ToNot(HaveOccurred())

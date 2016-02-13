@@ -1,18 +1,15 @@
 package cmds
 
 import (
-	"errors"
 	"fmt"
 )
 
 type slPackageOptionsCommand struct {
-	args    []string
 	options Options
 }
 
-func NewSlPackageOptionsCommand(args []string, options Options) slPackageOptionsCommand {
+func NewSlPackageOptionsCommand(options Options) slPackageOptionsCommand {
 	return slPackageOptionsCommand{
-		args:    args,
 		options: options,
 	}
 }
@@ -34,10 +31,11 @@ func (cmd slPackageOptionsCommand) Options() Options {
 }
 
 func (cmd slPackageOptionsCommand) Validate() (bool, error) {
-	return false, errors.New("Implement me!")
+	fmt.Printf("Validating %s command: options: %#v", cmd.Name(), cmd.options)
+	return true, nil
 }
 
 func (cmd slPackageOptionsCommand) Execute(args []string) (int, error) {
-	fmt.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
+	fmt.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), args, cmd.options)
 	return 0, nil
 }

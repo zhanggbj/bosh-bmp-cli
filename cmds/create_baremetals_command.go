@@ -1,18 +1,15 @@
 package cmds
 
 import (
-	"errors"
 	"fmt"
 )
 
 type createBaremetalsCommand struct {
-	args    []string
 	options Options
 }
 
-func NewCreateBaremetalsCommand(args []string, options Options) createBaremetalsCommand {
+func NewCreateBaremetalsCommand(options Options) createBaremetalsCommand {
 	return createBaremetalsCommand{
-		args:    args,
 		options: options,
 	}
 }
@@ -34,10 +31,11 @@ func (cmd createBaremetalsCommand) Options() Options {
 }
 
 func (cmd createBaremetalsCommand) Validate() (bool, error) {
-	return false, errors.New("Implement me!")
+	fmt.Printf("Validating %s command: options: %#v", cmd.Name(), cmd.options)
+	return true, nil
 }
 
 func (cmd createBaremetalsCommand) Execute(args []string) (int, error) {
-	fmt.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
+	fmt.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), args, cmd.options)
 	return 0, nil
 }

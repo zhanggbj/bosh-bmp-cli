@@ -7,7 +7,7 @@ import (
 	cmds "github.com/maximilien/bosh-bmp-cli/cmds"
 )
 
-var _ = Describe("bms command", func() {
+var _ = Describe("login command", func() {
 
 	var (
 		args    []string
@@ -16,44 +16,44 @@ var _ = Describe("bms command", func() {
 	)
 
 	BeforeEach(func() {
-		args = []string{"bmp", "bms"}
+		args = []string{"bmp", "login"}
 		options = cmds.Options{
 			Verbose: false,
 		}
 
-		cmd = cmds.NewBmsCommand(options)
+		cmd = cmds.NewLoginCommand(options)
 	})
 
-	Describe("NewBmsCommand", func() {
-		It("create new BmsCommand", func() {
+	Describe("NewLoginCommand", func() {
+		It("create new LoginCommand", func() {
 			Expect(cmd).ToNot(BeNil())
 
-			cmd2 := cmds.NewBmsCommand(options)
+			cmd2 := cmds.NewLoginCommand(options)
 			Expect(cmd2).ToNot(BeNil())
 			Expect(cmd2).To(Equal(cmd))
 		})
 	})
 
 	Describe("#Name", func() {
-		It("returns the name of a BmsCommand", func() {
-			Expect(cmd.Name()).To(Equal("bms"))
+		It("returns the name of a LoginCommand", func() {
+			Expect(cmd.Name()).To(Equal("login"))
 		})
 	})
 
 	Describe("#Description", func() {
-		It("returns the description of a BmsCommand", func() {
-			Expect(cmd.Description()).To(Equal("List all bare metals"))
+		It("returns the description of a LoginCommand", func() {
+			Expect(cmd.Description()).To(Equal("Login to the Bare Metal Provision Server"))
 		})
 	})
 
 	Describe("#Usage", func() {
-		It("returns the usage text of a BmsCommand", func() {
-			Expect(cmd.Usage()).To(Equal("bmp bms"))
+		It("returns the usage text of a LoginCommand", func() {
+			Expect(cmd.Usage()).To(Equal("bmp login"))
 		})
 	})
 
 	Describe("#Validate", func() {
-		It("validates a good BmsCommand", func() {
+		It("validates a good LoginCommand", func() {
 			validate, err := cmd.Validate()
 			Expect(validate).To(BeTrue())
 			Expect(err).ToNot(HaveOccurred())
@@ -61,7 +61,7 @@ var _ = Describe("bms command", func() {
 	})
 
 	Describe("#Execute", func() {
-		It("executes a good BmsCommand", func() {
+		It("executes a good LoginCommand", func() {
 			rc, err := cmd.Execute(args)
 			Expect(rc).To(Equal(0))
 			Expect(err).ToNot(HaveOccurred())

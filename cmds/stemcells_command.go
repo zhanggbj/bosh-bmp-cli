@@ -1,18 +1,15 @@
 package cmds
 
 import (
-	"errors"
 	"fmt"
 )
 
 type stemcellsCommand struct {
-	args    []string
 	options Options
 }
 
-func NewStemcellsCommand(args []string, options Options) stemcellsCommand {
+func NewStemcellsCommand(options Options) stemcellsCommand {
 	return stemcellsCommand{
-		args:    args,
 		options: options,
 	}
 }
@@ -34,10 +31,11 @@ func (cmd stemcellsCommand) Options() Options {
 }
 
 func (cmd stemcellsCommand) Validate() (bool, error) {
-	return false, errors.New("Implement me!")
+	fmt.Printf("Validating %s command: options: %#v", cmd.Name(), cmd.options)
+	return true, nil
 }
 
 func (cmd stemcellsCommand) Execute(args []string) (int, error) {
-	fmt.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
+	fmt.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), args, cmd.options)
 	return 0, nil
 }
