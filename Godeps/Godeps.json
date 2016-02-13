@@ -4,5 +4,21 @@
 	"Packages": [
 		"./..."
 	],
-	"Deps": []
+	"Deps": [
+		{
+			"ImportPath": "github.com/jessevdk/go-flags",
+			"Comment": "v1-330-g97448c9",
+			"Rev": "97448c91aac742cbca3d020b3e769013a420a06f"
+		},
+		{
+			"ImportPath": "github.com/onsi/ginkgo",
+			"Comment": "v1.2.0-42-g07d85e6",
+			"Rev": "07d85e6b10c4289c7d612f9b13f45ba36f66d55b"
+		},
+		{
+			"ImportPath": "github.com/onsi/gomega",
+			"Comment": "v1.0-83-gc72df92",
+			"Rev": "c72df929b80ef4930aaa75d5e486887ff2f3e06a"
+		}
+	]
 }
