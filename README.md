@@ -1,7 +1,7 @@
-BMP CLI [![Build Status](https://travis-ci.org/maximilien/bosh-bms-cli.svg?branch=master)](https://travis-ci.org/maximilien/bosh-bms-cli#)
+BMP CLI [![Build Status](https://travis-ci.org/maximilien/bosh-bmp-cli.svg?branch=master)](https://travis-ci.org/maximilien/bosh-bmp-cli#)
 ==============================
 
-[![Join the chat at https://gitter.im/maximilien/bosh-bms-cli](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/maximilien/bosh-bms-cli?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/maximilien/bosh-bmp-cli](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/maximilien/bosh-bmp-cli?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This is a simple CLI to help manage (provision, list, and delete) a bare metal server pool that can be used by the bosh-softlayer-cpi when doing deployment that include bare metal servers. This helps speed up these types of deployments.
 
