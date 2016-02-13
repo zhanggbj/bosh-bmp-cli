@@ -1,6 +1,9 @@
 package cmds
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type slPackagesCommand struct {
 	args    []string
@@ -28,6 +31,10 @@ func (cmd slPackagesCommand) Usage() string {
 
 func (cmd slPackagesCommand) Options() Options {
 	return cmd.options
+}
+
+func (cmd slPackagesCommand) Validate() (bool, error) {
+	return false, errors.New("Implement me!")
 }
 
 func (cmd slPackagesCommand) Execute(args []string) (int, error) {

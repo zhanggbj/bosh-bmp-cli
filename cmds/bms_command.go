@@ -1,6 +1,9 @@
 package cmds
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type bmsCommand struct {
 	args    []string
@@ -28,6 +31,10 @@ func (cmd bmsCommand) Usage() string {
 
 func (cmd bmsCommand) Options() Options {
 	return cmd.options
+}
+
+func (cmd bmsCommand) Validate() (bool, error) {
+	return false, errors.New("Implement me!")
 }
 
 func (cmd bmsCommand) Execute(args []string) (int, error) {

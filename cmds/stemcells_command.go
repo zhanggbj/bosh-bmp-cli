@@ -1,6 +1,9 @@
 package cmds
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type stemcellsCommand struct {
 	args    []string
@@ -28,6 +31,10 @@ func (cmd stemcellsCommand) Usage() string {
 
 func (cmd stemcellsCommand) Options() Options {
 	return cmd.options
+}
+
+func (cmd stemcellsCommand) Validate() (bool, error) {
+	return false, errors.New("Implement me!")
 }
 
 func (cmd stemcellsCommand) Execute(args []string) (int, error) {

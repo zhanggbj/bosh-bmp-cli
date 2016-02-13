@@ -10,5 +10,6 @@ type Command interface {
 	Description() string
 	Usage() string
 	Options() Options
+	Validate() (bool, error)
 	Execute(args []string) (int, error)
 }
