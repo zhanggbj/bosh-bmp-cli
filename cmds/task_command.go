@@ -31,12 +31,28 @@ func (cmd taskCommand) Options() Options {
 	return cmd.options
 }
 
+func (cmd taskCommand) Println(args ...interface{}) (int, error) {
+	if cmd.options.Verbose {
+		return fmt.Println(args...)
+	}
+
+	return 0, nil
+}
+
+func (cmd taskCommand) Printf(msg string, args ...interface{}) (int, error) {
+	if cmd.options.Verbose {
+		return fmt.Printf(msg, args...)
+	}
+
+	return 0, nil
+}
+
 func (cmd taskCommand) Validate() (bool, error) {
-	fmt.Printf("Validating %s command: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
+	cmd.Printf("Validating %s command: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
 	return true, nil
 }
 
 func (cmd taskCommand) Execute(args []string) (int, error) {
-	fmt.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), args, cmd.options)
+	cmd.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), args, cmd.options)
 	return 0, nil
 }

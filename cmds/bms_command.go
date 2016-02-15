@@ -31,12 +31,28 @@ func (cmd bmsCommand) Options() Options {
 	return cmd.options
 }
 
+func (cmd bmsCommand) Println(args ...interface{}) (int, error) {
+	if cmd.options.Verbose {
+		return fmt.Println(args...)
+	}
+
+	return 0, nil
+}
+
+func (cmd bmsCommand) Printf(msg string, args ...interface{}) (int, error) {
+	if cmd.options.Verbose {
+		return fmt.Printf(msg, args...)
+	}
+
+	return 0, nil
+}
+
 func (cmd bmsCommand) Validate() (bool, error) {
-	fmt.Printf("Validating %s command: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
+	cmd.Printf("Validating %s command: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
 	return true, nil
 }
 
 func (cmd bmsCommand) Execute(args []string) (int, error) {
-	fmt.Printf("Executing %s command: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
+	cmd.Printf("Executing %s command: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
 	return 0, nil
 }
