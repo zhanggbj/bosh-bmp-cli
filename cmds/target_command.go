@@ -1,17 +1,25 @@
 package cmds
 
 import (
-	"fmt"
+	common "github.com/maximilien/bosh-bmp-cli/common"
 )
 
 type targetCommand struct {
 	args    []string
 	options Options
+
+	ui      common.UI
+	printer common.Printer
 }
 
 func NewTargetCommand(options Options) targetCommand {
+	consoleUi := common.NewConsoleUi()
+
 	return targetCommand{
 		options: options,
+
+		ui:      consoleUi,
+		printer: common.NewDefaultPrinter(consoleUi, options.Verbose),
 	}
 }
 
@@ -31,28 +39,12 @@ func (cmd targetCommand) Options() Options {
 	return cmd.options
 }
 
-func (cmd targetCommand) Println(args ...interface{}) (int, error) {
-	if cmd.options.Verbose {
-		return fmt.Println(args...)
-	}
-
-	return 0, nil
-}
-
-func (cmd targetCommand) Printf(msg string, args ...interface{}) (int, error) {
-	if cmd.options.Verbose {
-		return fmt.Printf(msg, args...)
-	}
-
-	return 0, nil
-}
-
 func (cmd targetCommand) Validate() (bool, error) {
-	cmd.Printf("Validating %s command: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
+	cmd.printer.Printf("Validating %s command: args: %#v, options: %#v", cmd.Name(), cmd.args, cmd.options)
 	return true, nil
 }
 
 func (cmd targetCommand) Execute(args []string) (int, error) {
-	cmd.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), args, cmd.options)
+	cmd.printer.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), args, cmd.options)
 	return 0, nil
 }
