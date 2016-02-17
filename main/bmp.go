@@ -54,55 +54,27 @@ func createCommand(args []string, options cmds.Options) (cmds.Command, error) {
 		return nil, errors.New("No bmp command specified")
 	}
 
-	var command cmds.Command
-
-	cmdName := args[1]
-	switch cmdName {
-	case "bms":
-		command = cmds.NewBmsCommand(options)
-		break
-
-	case "create-baremetals":
-		command = cmds.NewCreateBaremetalsCommand(options)
-		break
-
-	case "login":
-		command = cmds.NewLoginCommand(options)
-		break
-
-	case "sl":
-		command = cmds.NewSlCommand(options)
-		break
-
-	case "status":
-		command = cmds.NewStatusCommand(options)
-		break
-
-	case "stemcells":
-		command = cmds.NewStemcellsCommand(options)
-		break
-
-	case "target":
-		command = cmds.NewTargetCommand(options)
-		break
-
-	case "task":
-		command = cmds.NewTaskCommand(options)
-		break
-
-	case "tasks":
-		command = cmds.NewTasksCommand(options)
-		break
-
-	case "update-state":
-		command = cmds.NewUpdateStateCommand(options)
-		break
-
-	default:
-		return nil, errors.New(fmt.Sprintf("Unknown bmp command: %s", cmdName))
+	cmd := createCommands(options)[args[1]]
+	if cmd == nil {
+		return nil, errors.New(fmt.Sprintf("Invalid command: %s", args[1]))
 	}
 
-	return command, nil
+	return cmd, nil
+}
+
+func createCommands(options cmds.Options) map[string]cmds.Command {
+	return map[string]cmds.Command{
+		"bms":               cmds.NewBmsCommand(options),
+		"create-baremetals": cmds.NewCreateBaremetalsCommand(options),
+		"login":             cmds.NewLoginCommand(options),
+		"sl":                cmds.NewSlCommand(options),
+		"status":            cmds.NewStatusCommand(options),
+		"stemcells":         cmds.NewStemcellsCommand(options),
+		"target":            cmds.NewTargetCommand(options),
+		"task":              cmds.NewTaskCommand(options),
+		"tasks":             cmds.NewTasksCommand(options),
+		"update-state":      cmds.NewUpdateStateCommand(options),
+	}
 }
 
 func handlePanic() {
