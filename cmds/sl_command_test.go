@@ -7,7 +7,7 @@ import (
 	cmds "github.com/maximilien/bosh-bmp-cli/cmds"
 )
 
-var _ = Describe("sl-packages command", func() {
+var _ = Describe("sl command", func() {
 
 	var (
 		args    []string
@@ -16,44 +16,44 @@ var _ = Describe("sl-packages command", func() {
 	)
 
 	BeforeEach(func() {
-		args = []string{"bmp", "sl-packages"}
+		args = []string{"bmp", "sl"}
 		options = cmds.Options{
 			Verbose: false,
 		}
 
-		cmd = cmds.NewSlPackagesCommand(options)
+		cmd = cmds.NewSlCommand(options)
 	})
 
-	Describe("NewSlPackagesCommand", func() {
-		It("create new SlPackagesCommand", func() {
+	Describe("NewSlCommand", func() {
+		It("create new SlCommand", func() {
 			Expect(cmd).ToNot(BeNil())
 
-			cmd2 := cmds.NewSlPackagesCommand(options)
+			cmd2 := cmds.NewSlCommand(options)
 			Expect(cmd2).ToNot(BeNil())
 			Expect(cmd2).To(Equal(cmd))
 		})
 	})
 
 	Describe("#Name", func() {
-		It("returns the name of a SlPackagesCommand", func() {
-			Expect(cmd.Name()).To(Equal("sl-packages"))
+		It("returns the name of a SlCommand", func() {
+			Expect(cmd.Name()).To(Equal("sl"))
 		})
 	})
 
 	Describe("#Description", func() {
-		It("returns the description of a SlPackagesCommand", func() {
-			Expect(cmd.Description()).To(Equal("List all Softlayer packages"))
+		It("returns the description of a SlCommand", func() {
+			Expect(cmd.Description()).To(Equal("List all Softlayer packages or package options"))
 		})
 	})
 
 	Describe("#Usage", func() {
-		It("returns the usage text of a SlPackagesCommand", func() {
-			Expect(cmd.Usage()).To(Equal("bmp sl-packages"))
+		It("returns the usage text of a SlCommand", func() {
+			Expect(cmd.Usage()).To(Equal("bmp sl --packages | --package-options"))
 		})
 	})
 
 	Describe("#Validate", func() {
-		It("validates a good SlPackagesCommand", func() {
+		It("validates a good SlCommand", func() {
 			validate, err := cmd.Validate()
 			Expect(validate).To(BeTrue())
 			Expect(err).ToNot(HaveOccurred())
@@ -61,7 +61,7 @@ var _ = Describe("sl-packages command", func() {
 	})
 
 	Describe("#Execute", func() {
-		It("executes a good SlPackagesCommand", func() {
+		It("executes a good SlCommand", func() {
 			rc, err := cmd.Execute(args)
 			Expect(rc).To(Equal(0))
 			Expect(err).ToNot(HaveOccurred())

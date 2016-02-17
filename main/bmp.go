@@ -70,12 +70,8 @@ func createCommand(args []string, options cmds.Options) (cmds.Command, error) {
 		command = cmds.NewLoginCommand(options)
 		break
 
-	case "sl-package-options":
-		command = cmds.NewSlPackageOptionsCommand(options)
-		break
-
-	case "sl-packages":
-		command = cmds.NewSlPackagesCommand(options)
+	case "sl":
+		command = cmds.NewSlCommand(options)
 		break
 
 	case "status":

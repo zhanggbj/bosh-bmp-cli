@@ -4,17 +4,17 @@ import (
 	common "github.com/maximilien/bosh-bmp-cli/common"
 )
 
-type slPackagesCommand struct {
+type slCommand struct {
 	options Options
 
 	ui      common.UI
 	printer common.Printer
 }
 
-func NewSlPackagesCommand(options Options) slPackagesCommand {
+func NewSlCommand(options Options) slCommand {
 	consoleUi := common.NewConsoleUi()
 
-	return slPackagesCommand{
+	return slCommand{
 		options: options,
 
 		ui:      consoleUi,
@@ -22,28 +22,28 @@ func NewSlPackagesCommand(options Options) slPackagesCommand {
 	}
 }
 
-func (cmd slPackagesCommand) Name() string {
-	return "sl-packages"
+func (cmd slCommand) Name() string {
+	return "sl"
 }
 
-func (cmd slPackagesCommand) Description() string {
-	return "List all Softlayer packages"
+func (cmd slCommand) Description() string {
+	return "List all Softlayer packages or package options"
 }
 
-func (cmd slPackagesCommand) Usage() string {
-	return "bmp sl-packages"
+func (cmd slCommand) Usage() string {
+	return "bmp sl --packages | --package-options"
 }
 
-func (cmd slPackagesCommand) Options() Options {
+func (cmd slCommand) Options() Options {
 	return cmd.options
 }
 
-func (cmd slPackagesCommand) Validate() (bool, error) {
+func (cmd slCommand) Validate() (bool, error) {
 	cmd.printer.Printf("Validating %s command: options: %#v", cmd.Name(), cmd.options)
 	return true, nil
 }
 
-func (cmd slPackagesCommand) Execute(args []string) (int, error) {
+func (cmd slCommand) Execute(args []string) (int, error) {
 	cmd.printer.Printf("Executing %s comamnd: args: %#v, options: %#v", cmd.Name(), args, cmd.options)
 	return 0, nil
 }
