@@ -52,6 +52,12 @@ var _ = Describe("login command", func() {
 		})
 	})
 
+	Describe("#Options", func() {
+		It("returns the options of a LoginCommand", func() {
+			Expect(cmds.EqualOptions(cmd.Options(), options)).To(BeTrue())
+		})
+	})
+
 	Describe("#Validate", func() {
 		It("validates a good LoginCommand", func() {
 			validate, err := cmd.Validate()

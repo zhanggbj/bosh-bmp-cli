@@ -52,6 +52,12 @@ var _ = Describe("status command", func() {
 		})
 	})
 
+	Describe("#Options", func() {
+		It("returns the options of a StatusCommand", func() {
+			Expect(cmds.EqualOptions(cmd.Options(), options)).To(BeTrue())
+		})
+	})
+
 	Describe("#Validate", func() {
 		It("validates a good StatusCommand", func() {
 			validate, err := cmd.Validate()

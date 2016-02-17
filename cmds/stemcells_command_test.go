@@ -51,6 +51,12 @@ var _ = Describe("stemcells command", func() {
 		})
 	})
 
+	Describe("#Options", func() {
+		It("returns the options of a StemcellsCommand", func() {
+			Expect(cmds.EqualOptions(cmd.Options(), options)).To(BeTrue())
+		})
+	})
+
 	Describe("#Validate", func() {
 		It("validates a good StemcellsCommand", func() {
 			validate, err := cmd.Validate()

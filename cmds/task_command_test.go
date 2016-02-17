@@ -51,6 +51,12 @@ var _ = Describe("task command", func() {
 		})
 	})
 
+	Describe("#Options", func() {
+		It("returns the options of a TaskCommand", func() {
+			Expect(cmds.EqualOptions(cmd.Options(), options)).To(BeTrue())
+		})
+	})
+
 	Describe("#Validate", func() {
 		It("validates a good TaskCommand", func() {
 			validate, err := cmd.Validate()

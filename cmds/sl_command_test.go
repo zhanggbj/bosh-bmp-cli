@@ -52,6 +52,12 @@ var _ = Describe("sl command", func() {
 		})
 	})
 
+	Describe("#Options", func() {
+		It("returns the options of a SlCommand", func() {
+			Expect(cmds.EqualOptions(cmd.Options(), options)).To(BeTrue())
+		})
+	})
+
 	Describe("#Validate", func() {
 		It("validates a good SlCommand", func() {
 			validate, err := cmd.Validate()

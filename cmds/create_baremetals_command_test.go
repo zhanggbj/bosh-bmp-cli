@@ -52,6 +52,12 @@ var _ = Describe("create-baremetals command", func() {
 		})
 	})
 
+	Describe("#Options", func() {
+		It("returns the options of a CreateBaremetalsCommand", func() {
+			Expect(cmds.EqualOptions(cmd.Options(), options)).To(BeTrue())
+		})
+	})
+
 	Describe("#Validate", func() {
 		It("validates a good BmsCommand", func() {
 			validate, err := cmd.Validate()

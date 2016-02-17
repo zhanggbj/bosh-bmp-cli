@@ -51,6 +51,12 @@ var _ = Describe("target command", func() {
 		})
 	})
 
+	Describe("#Options", func() {
+		It("returns the options of a TargetCommand", func() {
+			Expect(cmds.EqualOptions(cmd.Options(), options)).To(BeTrue())
+		})
+	})
+
 	Describe("#Validate", func() {
 		It("validates a good TargetCommand", func() {
 			validate, err := cmd.Validate()

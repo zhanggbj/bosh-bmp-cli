@@ -51,6 +51,12 @@ var _ = Describe("update-state command", func() {
 		})
 	})
 
+	Describe("#Options", func() {
+		It("returns the options of a UpdateStateCommand", func() {
+			Expect(cmds.EqualOptions(cmd.Options(), options)).To(BeTrue())
+		})
+	})
+
 	Describe("#Validate", func() {
 		It("validates a good UpdateStateCommand", func() {
 			validate, err := cmd.Validate()

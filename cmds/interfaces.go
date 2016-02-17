@@ -1,7 +1,7 @@
 package cmds
 
 type Options struct {
-	Help string `short:"h" long:"help" description:"Show help information"`
+	Help bool `short:"h" long:"help" description:"Show help information"`
 
 	Verbose bool `short:"v" long:"verbose" description:"Show verbose debug information"`
 
